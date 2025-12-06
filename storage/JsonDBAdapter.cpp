@@ -5,21 +5,23 @@
 #include "JsonDBAdapter.h"
 #include <iostream>
 
+// Bruker DTO-ens serialiseringsmetode for å utføre lagringen.
+bool JsonDBAdapter::saveObject(const RecipeDTO& recipe) {
+    // Adapteren får DTO-en, og konverterer den til formatet den trenger (JSON-streng)
+    std::string jsonString = recipe.toJsonString();
 
-bool JsonDBAdapter::saveObject(const std::string& objectData) {
-    std::cout << "Skriver til Json fil NOW!"<< std::endl;
-
+    std::cout << "--- JSON ADAPTER: SAVING ---" << std::endl;
+    std::cout << "Saving DTO object after serialization:" << std::endl;
+    std::cout << jsonString << std::endl;
+    // Her ville fstream (filskriving) eller nettverkskall vært.
+    std::cout << "----------------------------" << std::endl;
 
     return true;
 }
 
-
-// Funksjonsdefinisjon for retrieveObject
 std::string JsonDBAdapter::retrieveObject(const std::string& id) {
-    std::cout << "JSON Adapter: Retrieving data from JSON file for ID: " << id << std::endl;
+    std::cout << "JSON Adapter: Retrieving mock data for ID: " << id << std::endl;
 
-    // Simulerer at vi leser en linje fra filen og returnerer den.
-    return "{ \"id\": \"" + id + "\", \"type\": \"meal\", \"name\": \"Lasagna\" }";
+    // Returnerer en mock JSON-streng som må deserialiseres i app-laget.
+    return "{ \"id\": \"" + id + "\", \"title\": \"Retrieved Casserole\" }";
 }
-
-
