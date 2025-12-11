@@ -9,8 +9,7 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "nlohmann/json.hpp"
-#include "nlohmann/json_fwd.hpp"
+
 
 // 1. Definerer strukturen for hver ingrediens.
 // [mengde, kalorier_pr_100g, totale_kalorier]

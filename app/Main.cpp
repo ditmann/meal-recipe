@@ -34,9 +34,24 @@ void runRecipeApp() {
     std::cout << "-------------------------------" << std::endl;
 }
 
+void gaming() {
+
+    struct myValues {
+        int grams;
+        int calPer100gram;
+        int totalCal;
+    } myValues;
+
+    myValues.calPer100gram = 0;
+    myValues.grams = 0;
+    myValues.totalCal = 0;
+
+}
+
 
 int main() {
-    runRecipeApp();
+    //runRecipeApp();
+
 
     return 0;
     // std::unique_ptr frigjør automatisk minnet her.
