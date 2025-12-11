@@ -8,18 +8,18 @@
 #include <string>
 
 
-class Ingredient {
+class IngredientDTO {
     private:
     std::string name;
     int grams;
     int caloriesPer100Grams;
     int totalCalories;
     public:
-    Ingredient();
-    Ingredient(std::string name);
-    Ingredient(std::string name, int grams);
-    Ingredient(std::string name, int grams, int caloriesPer100Grams);
-    Ingredient(std::string name, int grams, int caloriesPer100Grams, int totalCalories);
+    IngredientDTO();
+    IngredientDTO(std::string name);
+    IngredientDTO(std::string name, int grams);
+    IngredientDTO(std::string name, int grams, int caloriesPer100Grams);
+    IngredientDTO(std::string name, int grams, int caloriesPer100Grams, int totalCalories);
 
 
     //-----------------getters and setters----------------

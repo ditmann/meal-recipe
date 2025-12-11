@@ -2,67 +2,67 @@
 // Created by adria on 12/11/2025.
 //
 
-#include "Ingredient.h"
+#include "IngredientDTO.h"
 //-----------------------contsructors---------------------------
-Ingredient::Ingredient() {
+IngredientDTO::IngredientDTO() {
     name = "noName";
     grams = 0;
     caloriesPer100Grams = 0;
     totalCalories = 0;
 }
-Ingredient::Ingredient(std::string name) {
+IngredientDTO::IngredientDTO(std::string name) {
     this->name = std::move(name);
     grams = 0;
     caloriesPer100Grams = 0;
     totalCalories = 0;
 }
-Ingredient::Ingredient(std::string name, int grams) {
+IngredientDTO::IngredientDTO(std::string name, int grams) {
     this->name = std::move(name);
     this->grams = grams;
     caloriesPer100Grams = 0;
     totalCalories = 0;
 }
-Ingredient::Ingredient(std::string name, int grams, int caloriesPer100Grams) {
+IngredientDTO::IngredientDTO(std::string name, int grams, int caloriesPer100Grams) {
     this->name = std::move(name);
     this->grams = grams;
     this->caloriesPer100Grams = caloriesPer100Grams;
     totalCalories = 0;
 }
-Ingredient::Ingredient(std::string name, int grams, int caloriesPer100Grams, int totalCalories) {
+IngredientDTO::IngredientDTO(std::string name, int grams, int caloriesPer100Grams, int totalCalories) {
     this->name = std::move(name);
     this->grams = grams;
     this->caloriesPer100Grams = caloriesPer100Grams;
     this->totalCalories = totalCalories;
 }
 
-//-----------------------getters and setters------------------
-std::string Ingredient::getName() const {
+//-----------------------getters and setters------------------------
+std::string IngredientDTO::getName() const {
     return name;
 }
-int Ingredient::getGrams() const{
+int IngredientDTO::getGrams() const{
     return grams;
 }
-int Ingredient::getCaloriesPer100Grams() const {
+int IngredientDTO::getCaloriesPer100Grams() const {
     return caloriesPer100Grams;
 }
-int Ingredient::getTotalCalories() const{
+int IngredientDTO::getTotalCalories() const{
     return totalCalories;
 }
-void Ingredient::setName(std::string name) {
+void IngredientDTO::setName(std::string name) {
     this->name = std::move(name);
 }
-void Ingredient::setGrams(int newGrams) {
+void IngredientDTO::setGrams(int newGrams) {
     grams = newGrams;
 }
-void Ingredient::setCaloriesPer100Grams(int newCaloriesPer100Grams) {
+void IngredientDTO::setCaloriesPer100Grams(int newCaloriesPer100Grams) {
     caloriesPer100Grams = newCaloriesPer100Grams;
 }
-void Ingredient::setTotalCalories(int newTotalCalories) {
+void IngredientDTO::setTotalCalories(int newTotalCalories) {
     totalCalories = newTotalCalories;
 }
 
 //-------------------Methods-----------------------------
 
-std::string Ingredient::toString() const {
+std::string IngredientDTO::toString() const {
     return name;
 }

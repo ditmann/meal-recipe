@@ -16,5 +16,5 @@ add_executable(meal_recipe
         app/Main.cpp
         storage/JsonDBAdapter.cpp
         core/dto/RecipeDTO.cpp
-        core/dto/Ingredient.cpp
-        core/dto/Ingredient.h)
+        core/dto/IngredientDTO.cpp
+        core/dto/IngredientDTO.h)
