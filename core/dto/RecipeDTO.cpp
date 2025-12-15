@@ -1,33 +1,95 @@
 // core/dto/RecipeDTO.cpp
 
 #include "RecipeDTO.h"
-#include <sstream>
 
 
+//Constructors
+RecipeDTO::RecipeDTO() {
+    name = "noName";
+}
+RecipeDTO::RecipeDTO(std::string name) {
+    this->name = std::move(name);
+}
+RecipeDTO::RecipeDTO(std::vector<IngredientDTO> ingredients) {
+    this->ingredients = std::move(ingredients);
+}
+RecipeDTO::RecipeDTO(std::string name, std::vector<IngredientDTO> ingredients) {
+    this->name = std::move(name);
+    this->ingredients = std::move(ingredients);
+}
+RecipeDTO::RecipeDTO(IngredientDTO ingredientNumber1) {
+    name = "noName";
+    ingredients[0] = std::move(ingredientNumber1);
+}
+RecipeDTO::RecipeDTO(IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2) {
+    name = "noName";
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3) {
+    name = "noName";
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4) {
+    name = "noName";
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3), std::move(ingredientNumber4)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4, IngredientDTO ingredientNumber5) {
+    name = "noName";
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3), std::move(ingredientNumber4), std::move(ingredientNumber5)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4, IngredientDTO ingredientNumber5, IngredientDTO ingredientNumber6) {
+    name = "noName";
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3), std::move(ingredientNumber4), std::move(ingredientNumber5), std::move(ingredientNumber6)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(std::string name, IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4, IngredientDTO ingredientNumber5) {
+    this->name = std::move(name);
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3), std::move(ingredientNumber4), std::move(ingredientNumber5)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(std::string name, IngredientDTO ingredientNumber1) {
+    this->name = std::move(name);
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(std::string name, IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2) {
+    this->name = std::move(name);
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(std::string name, IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3) {
+    this->name = std::move(name);
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(std::string name, IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4) {
+    this->name = std::move(name);
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3), std::move(ingredientNumber4)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
+RecipeDTO::RecipeDTO(std::string name, IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4, IngredientDTO ingredientNumber5, IngredientDTO ingredientNumber6) {
+    this->name = std::move(name);
+    std::vector<IngredientDTO> tempVectorIngredientDTO = {std::move(ingredientNumber1), std::move(ingredientNumber2), std::move(ingredientNumber3), std::move(ingredientNumber4), std::move(ingredientNumber5), std::move(ingredientNumber6)};
+    this->ingredients = std::move(tempVectorIngredientDTO);
+}
 
-// MERK: nlohmann/json-biblioteket er inkludert via RecipeDTO.h
-
-std::string RecipeDTO::toJsonString() const {
-    // 1. Lager et JSON-objekt fra nlohmann/json-biblioteket
-    nlohmann::json j;
-
-    // 2. Legger til det totale kaloriinnholdet
-    // Dette blir "totalkalori": 460 i JSON-formatet
-    j["totalkalori"] = totalCalories;
-
-    // 3. Konverterer C++-mappen over til JSON-objektet
-    // nlohmann/json er smart nok til å automatisk konvertere
-    // std::map<std::string, std::vector<int>> til JSONs tilsvarende struktur.
-    // Dette skaper nøkler som "pasta" og "tomatsaus" med tilhørende tall-arrays.
-
-    // Itererer over ingredients-mappen (std::map)
-    for (const auto& pair : ingredients) {
-        // pair.first er ingrediensnavnet (string)
-        // pair.second er IngredientData (std::vector<int>)
-        j[pair.first] = pair.second;
-    }
-
-    // 4. Konverterer det ferdige JSON-objektet (j) tilbake til en formatert streng.
-    // dump(4) betyr at strengen formateres pent med 4 mellomrom i innrykk.
-    return j.dump(4);
+//-------------------------Getter/setter----------------------------
+void RecipeDTO::addIngredient(IngredientDTO ingredient) {
+    ingredients.push_back(std::move(ingredient));
+}
+void RecipeDTO::setName(std::string name) {
+    this->name = std::move(name);
+}
+void RecipeDTO::setIngredients(std::vector<IngredientDTO> ingredients) {
+    this->ingredients = std::move(ingredients);
+}
+std::vector<IngredientDTO> RecipeDTO::getIngredients() {
+    return this->ingredients;
+}
+std::string RecipeDTO::getName() {
+    return this->name;
 }
