@@ -26,7 +26,7 @@ IngredientDTO::IngredientDTO(std::string name, int grams, int caloriesPer100Gram
     this->name = std::move(name);
     this->grams = grams;
     this->caloriesPer100Grams = caloriesPer100Grams;
-    totalCalories = 0;
+    totalCalories = grams * caloriesPer100Grams / 100;
 }
 IngredientDTO::IngredientDTO(std::string name, int grams, int caloriesPer100Grams, int totalCalories) {
     this->name = std::move(name);

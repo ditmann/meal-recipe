@@ -14,9 +14,8 @@ include_directories(
 # DEFINISJON AV EXECUTABLE (Skal kun inneholde .cpp filer)
 add_executable(meal_recipe
         app/Main.cpp
-        storage/JsonDBAdapter.cpp
         core/dto/RecipeDTO.cpp
         core/dto/IngredientDTO.cpp
         core/dto/IngredientDTO.h
-        core/Service/calculateValueOfRecipe.cpp
-        core/Service/calculateValueOfRecipe.h)
+        core/Service/calculateCalories.cpp
+        core/Service/calculateCalories.h)

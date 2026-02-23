@@ -3,7 +3,7 @@
 #include "RecipeDTO.h"
 
 
-//Constructors
+//Constructors Overloaded to be able to add mulitple at once
 RecipeDTO::RecipeDTO() {
     name = "noName";
 }
@@ -92,4 +92,10 @@ std::vector<IngredientDTO> RecipeDTO::getIngredients() {
 }
 std::string RecipeDTO::getName() {
     return this->name;
+}
+
+//-------------------------Methods--------------------------------------
+void calculateTotalCalories()
+{
+
 }

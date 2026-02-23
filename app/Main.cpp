@@ -1,58 +1,24 @@
 #include <iostream>
-#include <memory>
-#include "JsonDBAdapter.h" // Inkluderer den konkrete adapteren
+#include <string>
+#include <vector>
+#include <ingredientDTO.h>
 
-// Funksjon som demonstrerer bruken av DTO og adapter
-void runRecipeApp() {
-    // 1. Bygg DTO-data (som i ditt eksempel "pastabolones")
-    IngredientData pastaData = {100, 360, 360}; // [Mengde, Kalorier/100g, Totalt Kalorier]
-    IngredientData tomatoSauceData = {200, 50, 100};
+int main()
+{
 
-    std::map<std::string, IngredientData> ingredients;
-    ingredients["pasta"] = pastaData;
-    ingredients["tomatsaus"] = tomatoSauceData;
+    IngredientDTO meat("gaming2",1,100);
+    IngredientDTO spageti("gaming3",1000,100);
+    IngredientDTO sausuge("polse",500,100);
 
-    // 2. Lag DTO-objektet som skal serialiseres
-    RecipeDTO pastabolones(460, std::move(ingredients));
+    std::vector<IngredientDTO> ingredients = {meat,spageti,sausuge};
 
-    // 3. Bruker polymorfisme og smart peker: dbService er en DBPort* som peker på en JsonDBAdapter
-    std::unique_ptr<DBPort> dbService = std::make_unique<JsonDBAdapter>();
-
-    std::cout << "--- Starting Recipe Service ---" << std::endl;
-
-    // 4. Bruker interfacet til å lagre DTO-objektet
-    if (dbService->saveObject(pastabolones)) {
-        std::cout << "Saving completed successfully!" << std::endl;
+    // Loop by value (creates a copy of each element)
+    int tempCalories = 0;
+    for (IngredientDTO ingredient : ingredients) {
+            std::cout << ingredient.getName() << std::endl;
+            std::cout << tempCalories << std::endl;
+            tempCalories += ingredient.getTotalCalories();
     }
 
-    std::cout << "\nAttempting to retrieve data..." << std::endl;
 
-    // 5. Bruker interfacet til å hente data
-    std::string retrievedData = dbService->retrieveObject("999");
-
-    std::cout << "App received raw JSON data: " << retrievedData << std::endl;
-    std::cout << "-------------------------------" << std::endl;
-}
-
-void gaming() {
-
-    struct myValues {
-        int grams;
-        int calPer100gram;
-        int totalCal;
-    } myValues;
-
-    myValues.calPer100gram = 0;
-    myValues.grams = 0;
-    myValues.totalCal = 0;
-
-}
-
-
-int main() {
-    //runRecipeApp();
-
-
-    return 0;
-    // std::unique_ptr frigjør automatisk minnet her.
 }

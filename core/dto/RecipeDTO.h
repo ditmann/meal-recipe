@@ -15,6 +15,8 @@ class RecipeDTO {
     private:
     std::string name;
     std::vector<IngredientDTO> ingredients;
+    int totalCalories = 0;
+
     public:
     //constructors
     RecipeDTO();
@@ -34,6 +36,7 @@ class RecipeDTO {
     RecipeDTO(std::string name, IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4, IngredientDTO ingredientNumber5);
     RecipeDTO(std::string name, IngredientDTO ingredientNumber1, IngredientDTO ingredientNumber2, IngredientDTO ingredientNumber3, IngredientDTO ingredientNumber4, IngredientDTO ingredientNumber5, IngredientDTO ingredientNumber6);
     //metods
+    void calculateTotalCalories();
     void addIngredient(IngredientDTO ingredient);
     void setIngredients(std::vector<IngredientDTO> ingredients);
     void setName(std::string name);

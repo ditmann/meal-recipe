@@ -4,10 +4,15 @@
 
 #ifndef MEAL_RECIPE_CALCULATEVALUEOFRECIPE_H
 #define MEAL_RECIPE_CALCULATEVALUEOFRECIPE_H
+#include "RecipeDTO.h"
 
 
-class calculateValueOfRecipe
+class calculateCalories
 {
+    //metods
+    public:
+    //int calculateCaloriesOfRecipe(RecipeDTO);
+    //int calculateCaloriesOfIngredient(RecipeDTO);
 };
 
 
