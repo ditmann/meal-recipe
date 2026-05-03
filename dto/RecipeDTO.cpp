@@ -1,4 +1,4 @@
-// core/dto/RecipeDTO.cpp
+// fuctions/dto/RecipeDTO.cpp
 
 #include "RecipeDTO.h"
 
