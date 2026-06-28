@@ -1,12 +1,12 @@
-use crate::groceri::Groceri;
+use crate::grocery::Grocery;
 #[derive(Debug)]
 pub struct Recipe {
     name: String,
-    ingredients: Vec<Groceri>,
+    ingredients: Vec<Grocery>,
 }
 
 impl Recipe {
-    pub fn new(name: String, ingredients: Vec<Groceri>) -> Self {
+    pub fn new(name: String, ingredients: Vec<Grocery>) -> Self {
         Self {
             name,
             ingredients

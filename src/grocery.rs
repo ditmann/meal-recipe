@@ -1,10 +1,10 @@
 #[derive(Debug)]
-pub struct Groceri {
+pub struct Grocery {
     name: String,
     calories_per_100g: i32,
 }
 
-impl Groceri {
+impl Grocery {
     pub fn new(name: String, calories_per_100g: i32) -> Self {
         Self {
             name,

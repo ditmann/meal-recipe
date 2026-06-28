@@ -1,14 +1,14 @@
-mod groceri;
+mod grocery;
 mod recipe;
-use groceri::Groceri;
+use grocery::Grocery;
 use recipe::Recipe;
 
 fn main() {
     println!("Hello, world!");
 
-    let meat = Groceri::new(String::from("Meat"), 200);
+    let meat = Grocery::new(String::from("Meat"), 200);
 
-    let milk = Groceri::new(String::from("Milk"), 200);
+    let milk = Grocery::new(String::from("Milk"), 200);
 
     let vec = vec![milk, meat];
 
