@@ -1,4 +1,6 @@
-#[derive(Debug)]
+use serde::Serialize;
+
+#[derive(Serialize, Debug)]
 pub struct Grocery {
     name: String,
     calories_per_100g: i32,

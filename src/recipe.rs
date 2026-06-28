@@ -1,5 +1,8 @@
+use serde::Serialize;
 use crate::grocery::Grocery;
-#[derive(Debug)]
+
+
+#[derive(Serialize, Debug)]
 pub struct Recipe {
     name: String,
     ingredients: Vec<Grocery>,
@@ -12,5 +15,15 @@ impl Recipe {
             ingredients
         }
     }
+
+    pub fn to_json(&self) -> String {
+        todo!()
+    }
+
+    pub fn from_json(&self) -> String {
+        todo!()
+    }
+
+
 
 }
