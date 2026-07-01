@@ -1,0 +1,13 @@
+{
+  "ingredients": [
+    {
+      "calories_per_100g": 200,
+      "name": "Milk"
+    },
+    {
+      "calories_per_100g": 200,
+      "name": "Meat"
+    }
+  ],
+  "name": "Milk and Meat food"
+}

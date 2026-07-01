@@ -2,10 +2,7 @@ mod grocery;
 mod recipe;
 use grocery::Grocery;
 use recipe::Recipe;
-use serde::Serialize;
 use std::fs::File;
-use std::io::BufWriter;
-use std::net::Shutdown::Write;
 use serde_json::json;
 
 fn main() {
@@ -17,22 +14,19 @@ fn main() {
 
     let vec = vec![milk, meat];
 
-    let recipe = Recipe::new(String::from("Milk and Meat food"), vec);
+    let recipe = Recipe::new(String::from("Milk_Meat"), vec);
 
     println!("{:#?}", recipe);
 
-    write_to_file(&recipe)
+    recipe.to_json();
 
+    let recipe2 = make_recipe_from_json(r".\Milk_Meat");
+
+    println!("{:#?}", recipe2);
 }
-fn write_to_file(recipe: &Recipe) {
 
-    let data = json!({
-        "project": recipe.name,
-        "tags": ["rust", "backend", "fast"]
-    });
 
-    let file = File::create("recipe.json").unwrap();
-    let writer = BufWriter::new(file);
-
-    serde_json::to_writer(writer, &data).unwrap();
+fn make_recipe_from_json(file_name: &str) -> Recipe{
+    let json = std::fs::read_to_string(file_name).unwrap();
+    serde_json::from_str::<(Recipe)>(&json).unwrap()
 }
