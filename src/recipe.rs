@@ -42,7 +42,7 @@ impl Recipe {
             "total_calories": self.total_calories,
             "ingredients": self.ingredients,
         });
-        let file = File::create(r"recipes\".to_string() + &self.name).unwrap();
+        let file = File::create(r"recipes\".to_string() + &self.name + ".json").unwrap();
         let writer = BufWriter::new(file);
         serde_json::to_writer_pretty(writer, &data).unwrap();
     }

@@ -1,0 +1,21 @@
+{
+  "ingredients": [
+    {
+      "calories_per_100g": 150,
+      "grams": 50,
+      "name": "Milk"
+    },
+    {
+      "calories_per_100g": 200,
+      "grams": 49,
+      "name": "Meat"
+    },
+    {
+      "calories_per_100g": 2,
+      "grams": 500,
+      "name": "salat"
+    }
+  ],
+  "name": "Milk_Meat",
+  "total_calories": 183.0
+}
