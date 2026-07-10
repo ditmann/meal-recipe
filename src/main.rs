@@ -8,6 +8,8 @@ use grocery::Grocery;
 use recipe::Recipe;
 use crate::File_manager::read_files;
 
+//for iced gui
+use iced::widget::{button, column, text, Column};
 // enum to make it easy for the user
 enum State {
     Welcome,
@@ -28,62 +30,35 @@ pub fn welcome(){
 }
 
 
-fn main() {
-    let mut action = State::Welcome;
-
-
-    match action {
-        State::Welcome => {
-            welcome()
-        }
-        State::Browsing => {}
-        State::Create => {}
-        State::Editing => {}
-    }
-    //
-    // while true{
-    //     match action {
-    //         State::Welcome => {
-    //
-    //         }
-    //         State::Browsing => {
-    //
-    //         }
-    //         State::Create => {
-    //
-    //         }
-    //         State::Editing => {
-    //
-    //         }
-    //     }
-    // }
-
-
-    // let mut meat = Grocery::new(String::from("Meat"), 200);
-    // let mut milk = Grocery::new(String::from("Milk"), 150);
-    // let mut greens = Grocery::new(String::from("salat"),2);
-    //
-    // meat.set_grams(49);
-    // milk.set_grams(50);
-    // greens.set_grams(500);
-    //
-    //
-    // let vec = vec![milk, meat];
-    // let mut recipe = Recipe::new(String::from("Milk_Meat"), vec);
-    //
-    //
-    // println!("{:#?}", recipe);
-    // recipe.add_ingredient(greens);
-    //
-    // recipe.to_json();
-    //
-    // let recipe2 = make_recipe_from_json(r"C:\koding\meal-recipe\recipes\Milk_Meat");
-    //
-    // println!("{:#?}", recipe2);
-    //println!("{:#?}", read_files())
-
+pub fn main() -> iced::Result {
+    iced::run( Counter::update, Counter::view)
 }
 
+#[derive(Debug, Clone, Copy)]
+pub enum Message {
+    Increment,
+    Decrement,
+}
 
+#[derive(Default)]
+struct Counter {
+    value: i64,
+}
 
-
+impl Counter {
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::Increment => self.value += 1,
+            Message::Decrement => self.value -= 1,
+        }
+    }
+    fn view(&self) -> iced::Element<Message> {
+        column![
+            button("+").on_press(Message::Increment),
+            text(self.value.to_string()),
+            button("-").on_press(Message::Decrement),
+        ]
+            .padding(20)
+            .into()
+    }
+}
