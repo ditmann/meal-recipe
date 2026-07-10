@@ -7,10 +7,7 @@ use grocery::Grocery;
 use recipe::Recipe;
 use crate::File_manager::read_files;
 
-fn make_recipe_from_json(file_name: &str) -> Recipe{
-    let json = std::fs::read_to_string(file_name).unwrap();
-    serde_json::from_str::<Recipe>(&json).unwrap()
-}
+
 
 fn main() {
     // let mut meat = Grocery::new(String::from("Meat"), 200);
