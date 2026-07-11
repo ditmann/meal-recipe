@@ -21,6 +21,9 @@ impl Recipe {
         recipe_no_tot_cal.calculate_total_calories();
         return recipe_no_tot_cal
     }
+    pub fn get_name(&self) -> &String{
+        &self.name
+    }
 
     fn calculate_total_calories(&mut self){
          let calories_times_grams: i32= self.ingredients
