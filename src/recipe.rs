@@ -5,7 +5,7 @@ use serde_json::json;
 use crate::grocery::Grocery;
 
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Serialize, Debug, Default, Clone)]
 pub struct Recipe { 
     name: String,
     total_calories: f32,
@@ -23,6 +23,14 @@ impl Recipe {
     }
     pub fn get_name(&self) -> &String{
         &self.name
+    }
+
+    pub fn get_total_calories(&self) -> f32{
+        self.total_calories.clone()
+    }
+
+    pub fn get_ingredients(&mut self) -> Option<Vec<Grocery>> {
+        Some(self.ingredients.clone())
     }
 
     fn calculate_total_calories(&mut self){

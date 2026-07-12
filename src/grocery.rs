@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct Grocery {
     name: String,
     calories_per_100g: i32,
@@ -24,6 +24,9 @@ impl Grocery {
     }
     pub fn set_grams(&mut self, grams: i32){
         self.grams = grams
+    }
+    pub fn get_name(&self) -> String {
+        self.name.clone()
     }
     
     
