@@ -1,13 +1,13 @@
 mod grocery;
 mod recipe;
-mod File_manager;
+mod file_manager;
 pub mod iced_controller;
 
 use std::fs;
 use iced::Fill;
 use grocery::Grocery;
 use recipe::Recipe;
-use crate::File_manager::read_files;
+use crate::file_manager::read_files;
 
 //for iced gui
 use iced::widget::{button, column, container, text, Column,};

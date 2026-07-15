@@ -3,7 +3,7 @@ use iced::Fill;
 use crate::iced_controller::Status::Welcome;
 use iced::widget::{button, column, container, row, scrollable, text, Column, Row, Scrollable};
 use iced::widget::pane_grid::state;
-use crate::File_manager::read_files;
+use crate::file_manager::read_files;
 use crate::grocery::Grocery;
 use crate::recipe::Recipe;
 
@@ -14,7 +14,7 @@ pub enum Status {
     Browsing,
     Create,
     Editing(String),
-    ChoiceMade(String),
+    SelectMeal(String),
 }
 
 #[derive(Debug, Default)]
@@ -44,7 +44,7 @@ impl IceGUI{
             .map(|item| {
                 let name = item.get_name();
                 button(text(name))
-                    .on_press(Status::ChoiceMade(name.clone()))
+                    .on_press(Status::SelectMeal(name.clone()))
                 .into()
             })
             .collect();
@@ -75,20 +75,21 @@ impl IceGUI{
                 ]
                     .spacing(10)
             } else{
-                row![text("gaming")]
+                row![text("waiting")]
             };
 
         let info_form_selected_meal:Scrollable<Status> = scrollable(if let Some(ingredient) = &self.ingredients {
                 let grocery_buttons_and_text: Vec<iced::Element<'_ , Status>> = ingredient
                     .iter()
                     .map(|grocery| {
-                        column![
-                        button(text(grocery.get_name()))
-                            .on_press(Status::Editing(grocery.get_name().clone())),
-                            text(format!("per 100 grams: {}", grocery.get_calories_per_100())),
-                            text(format!("grams: {}", grocery.get_grams()))
+                        button(
+                                column![
+                            text(grocery.get_name()),
+                            text(format!("per hundre: {}", grocery.get_calories_per_100())),
+                            text(format!("vekt i g: {}", grocery.get_grams()))
                             ]
                             .spacing(10)
+                        ).on_press(Status::Editing(grocery.get_name().clone()))
                             .into()
                     })
                     .collect();
@@ -101,6 +102,11 @@ impl IceGUI{
         let mid_column = column![
         name_of_selected_meal , info_form_selected_meal
         ];
+
+        //--------------------left column-----------------------
+       // let name_of_selected_recipe = self.selected_recipe.clone().unwrap().get_name().clone();
+        //her må det være felt man kan skrive på, og som er fylt med info som man kan endre må finne rikitg boks i iced
+
 
         //---------------------Rowing all the columns-----------------------------
         let row_with_all = row![
@@ -124,7 +130,8 @@ impl IceGUI{
             Status::Browsing => println!("test"),
             Status::Create => println!("gaming"),
             Status::Editing(ingredient) => println!("testing {}", ingredient),
-            Status::ChoiceMade(meal) => { self.select_recipe(meal); }
+            Status::SelectMeal(meal) => { self.select_recipe(meal); }
+
         }
     }
     fn edit(){
